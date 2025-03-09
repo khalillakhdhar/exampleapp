@@ -1,0 +1,32 @@
+<h2>Gestion des utilisateurs</h2>
+<br>
+<table class="table table-bordered table-responsive">
+<thead>
+  <tr>
+    <th>Id</th>
+    <th> Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>City</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let us of users">
+    <td>{{us.id}}</td>
+    <td>{{us.name}}</td>
+    <td>{{us.username}}</td>
+    <td>{{us.email}}</td>
+    <td>{{us.phone}}</td>
+    <td>{{us.address.city}}</td>
+    <td>
+
+      <button class="btn btn-danger">Delete</button>
+    </td>
+
+  </tr>
+</tbody>
+
+
+</table>
