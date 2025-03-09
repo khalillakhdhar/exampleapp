@@ -23,9 +23,11 @@ export class UserComponent {
   addUser()
   {
     this.userService.createUser(this.user).subscribe(response=>{
+   // for fake api
       this.users.push(response)
 
       this.user={} as User;
+      alert("ajouté avec succès");
     });
   }
   deleteOneUser(user:User)
