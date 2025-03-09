@@ -20,5 +20,26 @@ export class UserComponent {
   {
     this.userService.getUsers().subscribe(response=>this.users=response);
   }
+  addUser()
+  {
+    this.userService.createUser(this.user).subscribe(response=>{
+      this.users.push(response)
+
+      this.user={} as User;
+    });
+  }
+  deleteOneUser(user:User)
+  {
+    if(confirm("voulez vous supprimer: "+user.name))
+    {
+      this.userService.deleteUser(user.id || 0).subscribe(response=>{
+// for fake api
+        let index=this.users.indexOf(user);
+        this.users.splice(index,1);
+      });
+    }
+
+
+  }
 
 }

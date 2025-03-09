@@ -1,4 +1,47 @@
+
+
 <h2>Gestion des utilisateurs</h2>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+Ajouter un utilisateur
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajout</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #userForm="ngForm" (ngSubmit)="addUser()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required  [(ngModel)]="user.name">
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required [(ngModel)]="user.username">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="user.email">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" required [(ngModel)]="user.phone">
+          </div>
+
+          <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Ajouter</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 <br>
 <table class="table table-bordered table-responsive">
 <thead>
@@ -8,7 +51,7 @@
     <th>Username</th>
     <th>Email</th>
     <th>Phone</th>
-    <th>City</th>
+
     <th>Action</th>
   </tr>
 </thead>
@@ -19,10 +62,10 @@
     <td>{{us.username}}</td>
     <td>{{us.email}}</td>
     <td>{{us.phone}}</td>
-    <td>{{us.address.city}}</td>
+    <!--td>{{us.address.city}}</td-->
     <td>
 
-      <button class="btn btn-danger">Delete</button>
+      <button (click)="deleteOneUser(us)" class="btn btn-danger">Delete</button>
     </td>
 
   </tr>
